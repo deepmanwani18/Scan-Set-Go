@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 class Store extends Component {
     render() {
         return (
-            <div>
+        <div>
                 {/* <header className="App-header"> */}
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         {/* <p>
@@ -16,15 +16,13 @@ class Store extends Component {
         >
           Learn React
         </a> */}
-        <h1>
-            Welcome to SCAN SET GO
-        </h1>
-        <h3>
-            Stores near by you!
-        </h3>
-      {/* </header> */}
+        {/* </header> */}
+            <h1>Store X</h1>
+            <p>Bar-Code Scanner here!</p>
+            <br></br>
+            <p>View Cart</p>
+        </div>
 
-            </div>
         )
     }
 }
