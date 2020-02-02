@@ -4,12 +4,24 @@ import { Card } from "semantic-ui-react";
 
 let shops = [{
   header: 'Big Bazaar',
-  description: ''
+  description: 'Everything, cheaper and degraded'
 },
 {
   header: 'Pantaloons',
-  description: ''
-}]
+  description: 'The best clothes that won\'t fit you'
+},
+  {
+    header: 'DMart',
+    description: 'Just to be clear, Walmart\'s not my son.'
+  },
+  {
+    header: 'Decathlon',
+    description: 'All Day I Dream About Sports'
+  },
+  {
+    header: 'Reliance',
+    description: 'We would have been at the top if it were for Mukesh'
+  },]
 class Home extends Component {
 
     addStore = (header) => {
@@ -17,6 +29,18 @@ class Home extends Component {
     }
   
     render() {
+      let list = shops.map ( (shop, index) => {
+        return (
+          <div>
+            <Link to="/store">
+              <Card centered onClick={() => this.addStore(shop.header)}
+                header={shop.header}
+                meta={shop.description} />
+            </Link>
+            <br/>
+          </div>
+        )
+      })
         return (
           <div>
             <center>
@@ -24,12 +48,13 @@ class Home extends Component {
                   Welcome to SCAN SET GO
               </h1>
               <h3>
-                  Stores near by you!
+                  Stores near you!
               </h3>
             </center>
       
             {/* </header> */}
-            <Link to="/store">
+            {list}
+            {/* <Link to="/store">
               <Card centered onClick={() => this.addStore(shops[0].header)} 
               header={shops[0].header} 
               meta={shops[0].description} />
@@ -38,7 +63,7 @@ class Home extends Component {
               <Card centered onClick={() => this.addStore(shops[1].header)}
                 header={shops[1].header}
                 meta={shops[1].description} />
-            </Link>
+            </Link> */}
           </div>  
          
         )

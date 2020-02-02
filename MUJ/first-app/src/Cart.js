@@ -11,7 +11,7 @@ class Cart extends Component {
         }
     }
 
-    componentWillMount () {
+    componentDidMount () {
         console.log(this.props.cart)
         this.setState({
             cart: this.props.cart,
@@ -27,7 +27,7 @@ class Cart extends Component {
         let index=1;
         const list = this.state.cart.map(item => {
             return (
-                <tr keys={index++}>
+                <tr key={index++}>
                     <td className="text-left">{item.product}</td>
                     <td className="text-left">{item.price}</td>
                     <td className="text-left">{item.company}</td>
@@ -38,7 +38,7 @@ class Cart extends Component {
         if(!(this.state.cart.length < 1)) 
         return (
             <div>
-                <div class="table-title">
+                <div className="table-title">
                 <h1 className= "font" style={{textAlign: "center"}}>YOUR CART</h1>
                 </div>
                 <table className="table-fill">

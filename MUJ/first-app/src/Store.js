@@ -24,6 +24,7 @@ class Store extends Component {
     }
 
     cartViewer = () => {
+        console.log(this.state.cart);
         this.props.addToCart(this.state.cart);
     }
     // componentDidMount () {
