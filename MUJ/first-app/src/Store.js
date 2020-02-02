@@ -5,26 +5,27 @@ class Store extends Component {
         super(props)
         this.state = {
             result: 'No result'
-        }
-
-        this.handleScan = this.handleScan.bind(this)
+        }   
     }
-    handleScan(data) {
-        this.setState({
-            result: data
-        })
-    }
-    handleError(err) {
-        console.error(err)
-    }
+    
     render() {
         return (
-            <div>
-                <BarcodeReader
-                    onError={this.handleError}
-                    onScan={this.handleScan}
+            <div id='videoview' width={this.props.width} height={this.props.height}>
+                <button onClick={this.scanBarcode}>Scan Barcodes</button>
+                <video
+                    autoPlay
+                    width={this.props.width}
+                    height={this.props.height}
+                    src={this.state.src}
+                    muted={this.props.audio}
+                    className={this.props.className}
+                    playsInline
+                    style={this.props.style}
+                    ref={(ref) => {
+                        this.video = ref;
+                    }}
                 />
-                <h1>Bar Code Reader</h1>
+                <canvas id="overlay" width={this.props.width} height={this.props.height}></canvas>
             </div>
         )
     }
