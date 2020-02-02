@@ -9,8 +9,10 @@
     "react": "^16.12.0",
     "react-barcode-reader": "0.0.1",
     "react-dom": "^16.12.0",
+    "react-qr-scanner": "0.0.8",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.1"
+    "react-scripts": "3.3.1",
+    "scandit-sdk": "^4.6.2"
   },
   "scripts": {
     "start": "react-scripts start",

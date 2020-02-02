@@ -1,31 +1,33 @@
 import React, { Component } from 'react';
 import BarcodeReader from 'react-barcode-reader'
+import Demo from './Store/Demo';
+import { Link } from 'react-router-dom';
+
 class Store extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            result: 'No result'
+            result: 'No result',
+            cart: []
         }   
+    }
+
+    updateState = (add) =>  {
+        this.setState((prevState) => ({
+            cart: [...prevState.cart, add]
+        }));
+        console.log(this.state.cart)
+    }
+
+    cartViewer = () => {
+        this.props.addToCart(this.state.cart);
     }
     
     render() {
         return (
-            <div id='videoview' width={this.props.width} height={this.props.height}>
-                <button onClick={this.scanBarcode}>Scan Barcodes</button>
-                <video
-                    autoPlay
-                    width={this.props.width}
-                    height={this.props.height}
-                    src={this.state.src}
-                    muted={this.props.audio}
-                    className={this.props.className}
-                    playsInline
-                    style={this.props.style}
-                    ref={(ref) => {
-                        this.video = ref;
-                    }}
-                />
-                <canvas id="overlay" width={this.props.width} height={this.props.height}></canvas>
+            <div>
+                <Demo additem={this.updateState}/>
+                <Link to="/cart"><button onClick={this.cartViewer}>View Cart</button></Link>
             </div>
         )
     }
