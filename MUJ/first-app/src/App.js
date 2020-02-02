@@ -24,6 +24,7 @@ class App extends Component {
     this.setState({
       cart: addedCart
     })
+    console.log('Checking for scams', this.state.cart)
   }
 
   addStore = (shop) => {
