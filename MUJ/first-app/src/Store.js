@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
+import BarcodeReader from 'react-barcode-reader'
 class Store extends Component {
+    constructor (props) {
+        super(props)
+        this.state = {
+            result: 'No result'
+        }
+
+        this.handleScan = this.handleScan.bind(this)
+    }
+    handleScan(data) {
+        this.setState({
+            result: data
+        })
+    }
+    handleError(err) {
+        console.error(err)
+    }
     render() {
         return (
-        <div>
-                {/* <header className="App-header"> */}
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p> */}
-        {/* <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-        {/* </header> */}
-            <h1>Store X</h1>
-            <p>Bar-Code Scanner here!</p>
-            <br></br>
-            <p>View Cart</p>
-        </div>
-
+            <div>
+                <BarcodeReader
+                    onError={this.handleError}
+                    onScan={this.handleScan}
+                />
+                <h1>Bar Code Reader</h1>
+            </div>
         )
     }
 }
