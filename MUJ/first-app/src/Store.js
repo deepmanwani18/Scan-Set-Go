@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import BarcodeReader from 'react-barcode-reader'
 import Demo from './Store/Demo';
 import { Link } from 'react-router-dom';
 
@@ -26,6 +25,9 @@ class Store extends Component {
     render() {
         return (
             <div>
+                <center>
+                    <h1>Welcome to {this.props.storeName}</h1>
+                </center>
                 <Demo additem={this.updateState}/>
                 <Link to="/cart"><button onClick={this.cartViewer}>View Cart</button></Link>
             </div>

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom"
 // import logo from './logo.svg';
 import './App.css';
@@ -16,13 +15,21 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      cart: []
+      cart: [],
+      shop: ''
     }
   }
 
   updateCart = (addedCart) => {
     this.setState({
       cart: addedCart
+    })
+  }
+
+  addStore = (shop) => {
+    console.log(shop)
+    this.setState({
+      shop: shop
     })
   }
 
@@ -33,13 +40,13 @@ class App extends Component {
             {/* <Home /> */}
             <Switch>
               <Route path="/" exact>
-                <Home />
+                <Home addStore={this.addStore}/>
               </Route>
               <Route path="/store">
-                <Store addToCart={this.updateCart}/>
+                <Store storeName={this.state.shop} addToCart={this.updateCart}/>
               </Route>
               <Route path="/cart">
-                <Cart />
+                <Cart cart={this.state.cart}/>
               </Route>
             </Switch>
           </Router>

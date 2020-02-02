@@ -1,51 +1,57 @@
 import React, { Component } from 'react';
-import '/home/deepesh/Desktop/MUJ/first-app/src/cartcss.css'
+import './cartcss.css'
 class Cart extends Component {
+    constructor (props) {
+        super(props)
+        this.state = {
+            cart: []
+        }
+    }
+
+    componentWillMount () {
+        console.log(this.props.cart)
+        this.setState({
+            cart: this.props.cart
+        })
+        setTimeout(() => {
+            console.log(this.state.cart)
+        }, 2000);
+        
+    }
+
     render() {
+        let index=1;
+        const list = this.state.cart.map(item => {
+            return (
+                <tr keys={index++}>
+                    <td className="text-left">{item.product}</td>
+                    <td className="text-left">{item.price}</td>
+                    <td className="text-left">{item.company}</td>
+                </tr>
+            )
+        })
+    
         return (
             <div>
-      
-<div class="table-title">
-<h1 className= "font" style={{textAlign: "center"}}>YOUR CART</h1>
-</div>
-<table class="table-fill">
-<thead>
-<tr>
-<th class="text-left">ITEM</th>
-<th class="text-left">PRICE</th>
-</tr>
-</thead>
-<tbody class="table-hover">
-<tr>
-<td class="text-left">ITEM A</td>
-<td class="text-left">100</td>
-</tr>
-<tr>
-<td class="text-left">ITEM B</td>
-<td class="text-left">10</td>
-</tr>
-<tr>
-<td class="text-left">ITEM C</td>
-<td class="text-left">85</td>
-</tr>
-<tr>
-<td class="text-left">ITEM C</td>
-<td class="text-left">56</td>
-</tr>
-<tr>
-<td class="text-left">ITEM D</td>
-<td class="text-left">98</td>
-</tr>
-</tbody>
-</table>
-  
-<div class="footer">
-  <p style = {{textAlign: "center"}} >I am done with Shopping</p>
-</div>
-
-            </div>
-            
-         
+                <div class="table-title">
+                <h1 className= "font" style={{textAlign: "center"}}>YOUR CART</h1>
+                </div>
+                <table className="table-fill">
+                    <thead>
+                    <tr>
+                        <th className="text-left">ITEM</th>
+                        <th className="text-left">PRICE</th>
+                        <th className="text-left">SELLER</th>
+                    </tr>
+                    </thead>
+                    <tbody className="table-hover">
+                        {list}
+                    </tbody>
+                </table>                
+                <div className="footer">
+                <p style = {{textAlign: "center"}} >I am done with Shopping</p>
+                </div>
+            </div>         
         )
     }
 }
