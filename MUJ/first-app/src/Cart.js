@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
 import './cartcss.css'
+import { Link } from "react-router-dom";
+
 class Cart extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            cart: []
+            cart: [],
+            shop: ''
         }
     }
 
     componentWillMount () {
         console.log(this.props.cart)
         this.setState({
-            cart: this.props.cart
+            cart: this.props.cart,
+            shop: this.props.shop
         })
         setTimeout(() => {
             console.log(this.state.cart)
         }, 2000);
         
     }
-
+    
     render() {
         let index=1;
         const list = this.state.cart.map(item => {
@@ -30,7 +34,8 @@ class Cart extends Component {
                 </tr>
             )
         })
-    
+        
+        if(!(this.state.cart.length < 1)) 
         return (
             <div>
                 <div class="table-title">
@@ -52,7 +57,18 @@ class Cart extends Component {
                 <p style = {{textAlign: "center"}} >I am done with Shopping</p>
                 </div>
             </div>         
-        )
+        ) 
+        else {
+            return(
+            <center>
+             <h1>Wow! Such Empty. Please start 
+             <Link to="/store"> 
+                  <span> Shopping</span>
+                 </Link>
+                 </h1>
+             </center>
+            )
+        }
     }
 }
 

@@ -31,12 +31,15 @@ class Demo extends Component {
     }
     render() {
         const previewStyle = {
-            height: 800,
-            width: 900,
+            
+            height: 400,
+            width: 400,
+            // padding: 100,
         }
 
         return (
             <div>
+                <center>
                 <QrReader
                     delay={this.state.delay}
                     style={previewStyle}
@@ -44,6 +47,7 @@ class Demo extends Component {
                     onScan={this.handleScan}
                 />
                 <p>{this.state.result}</p>
+                </center>
             </div>
         )
     }

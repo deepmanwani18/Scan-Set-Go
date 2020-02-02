@@ -33,6 +33,10 @@ class App extends Component {
     })
   }
 
+  
+
+  
+
   render() {
       return (
         <div className="App">
@@ -46,7 +50,7 @@ class App extends Component {
                 <Store storeName={this.state.shop} addToCart={this.updateCart}/>
               </Route>
               <Route path="/cart">
-                <Cart cart={this.state.cart}/>
+                <Cart cart={this.state.cart} shop={this.state.shop} />
               </Route>
             </Switch>
           </Router>
