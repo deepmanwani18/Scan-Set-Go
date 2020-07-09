@@ -1,2 +1,2 @@
-# MUJ
-MUJ hacks 4.0
+# Scan Set Go!
+developed in MUJ hacks 4.0
